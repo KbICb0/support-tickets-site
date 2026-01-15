@@ -24,6 +24,6 @@ class Ticket(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50))
     status: Mapped[str] = mapped_column(String(20))
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     description: Mapped[str] = mapped_column(String(500))
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship("User", back_populates="tickets")

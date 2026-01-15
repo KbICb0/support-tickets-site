@@ -17,11 +17,12 @@ with Session.begin() as session:
     #session.add(admin)
     #session.add(tiket2)
     #session.add(tiket3)
-    stmt = select(User)
-    print(stmt)
-    print(select(User.tickets))
-with engine.connect() as conn:
-    for row in conn.execute(stmt):
-       print(row)
-    user = session.query(User)
-print(user)
+    users = session.query(User).all()
+    user = users[0]
+    print(user.email)
+    print(user.tickets)
+    print(user.tickets[0])
+    ticket = user.tickets[0]
+    print(ticket.user.email)
+    print(ticket.name)
+    print(ticket.description)
